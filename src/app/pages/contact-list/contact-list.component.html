@@ -1,0 +1,17 @@
+<div class="container py-3">
+    <div class="row">
+        <h2 class="py-3 col-lg-6">Lista de contactos</h2>
+        <div class="col-lg-6 flex-column d-flex align-items-end justify-content-center">
+            <a class="btn btn-primary" href="/add">        
+                <i class="fas fa-plus"></i>
+                Crear nuevo contacto
+            </a>
+        </div>        
+    </div>    
+    <div>
+        <app-contact-card *ngFor="let contact of contacts" [contact]="contact"></app-contact-card>
+        <div class="py-5" *ngIf="contacts.length === 0">
+            <h1>Parece que no hay contactos, porque no creas algunos ?</h1>
+        </div>
+    </div>    
+</div>

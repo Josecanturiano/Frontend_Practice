@@ -1,0 +1,41 @@
+<div class="card">    
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src={{contact.photo}} alt="contact">
+            </div>
+            <div class="col-lg-8 container">
+                <h3 class="card-title py-3">{{contact.name}} {{contact.lastName}}</h3>
+                <div class="row">
+                    <div class="col-lg-2 py-2">
+                        <p>Email :</p>
+                        <p>Direccion :</p>
+                        <p>Ciudad :</p>
+                    </div>    
+                    <div class="col-lg-4 py-2">
+                        <p>{{contact.email}}</p>
+                        <p>{{contact.address}}</p>
+                        <p>{{contact.city}}</p>
+                    </div>  
+                    <div class="col-lg-4">
+                        <p class="py-2">Telefonos</p>
+                        <div style="max-height: 250px;" class="overflow-auto">
+                            <p *ngFor="let phone of contact.phoneNumbers">{{phone}}</p>               
+                        </div>                        
+                    </div>                
+            
+                </div>                
+            </div>  
+            <div class="col-lg-1">
+                    <div class="flex-column d-flex align-items-end justify-content-around" style="height: 50%;">
+                        <div>
+                            <button (click)="editThis()" class="btn btn-primary"><i class="fas fa-pen fa-lg"></i></button>
+                        </div>
+                        <div>
+                            <button (click)="deleteThis()" type="button" class="btn btn-danger"><i class="fas fa-trash-alt fa-lg"></i></button>                            
+                        </div>                
+                    </div>                    
+            </div>          
+        </div>          
+    </div>
+  </div>

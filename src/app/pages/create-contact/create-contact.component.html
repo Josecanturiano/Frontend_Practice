@@ -1,0 +1,81 @@
+<div class="container py-3">
+  <h2 class="py-3">Crear contacto</h2>
+  <form [formGroup]="contactForm" (onSubmit)="save()">
+    <div class="row">
+    
+      <div class="col-lg-6">      
+        
+        <div class="form-group py-2">
+          <label for="inputEmail4">Nombre</label>
+          <input [class.is-invalid]="invalidName" formControlName="name" type="text" class="form-control"  placeholder="Nombre">          
+          <small *ngIf="invalidName" class="text-danger">
+            Ingrese un nombre
+          </small>
+        </div>
+        
+        <div class="form-group py-2">
+          <label for="inputPassword4">Apellido</label>
+          <input [class.is-invalid]="invalidLastName" formControlName="lastName" type="text" class="form-control"  placeholder="Apellido">
+          <small *ngIf="invalidLastName" class="text-danger">
+            Ingrese un apellido
+          </small>
+        </div>
+
+      <div class="form-group py-2">
+        <label for="inputAddress">Dirección</label>
+        <input [class.is-invalid]="invalidAddress" formControlName="address" type="text" class="form-control"  placeholder="Dirección">
+        <small *ngIf="invalidAddress" class="text-danger">
+          Ingrese una dirección
+        </small>
+      </div>
+
+      <div class="form-group py-2">
+        <label for="inputAddress2">Ciudad</label>
+        <input [class.is-invalid]="invalidAddress" formControlName="city" type="text" class="form-control"  placeholder="Ciudad">
+        <small *ngIf="invalidCity" class="text-danger">
+          Ingrese una ciudad
+        </small>
+      </div>
+
+      <div class="form-group py-2">
+        <label for="inputCity">Email</label>
+        <input [class.is-invalid]="invalidEmail" formControlName="email" type="text" class="form-control" placeholder="Email">
+        <small *ngIf="invalidEmail" class="text-danger">
+          Ingrese un email valido
+        </small>
+      </div>   
+
+      <div class="form-group py-2">
+        <label for="inputCity">Telefonos</label>
+        <div class="input-group mb-3">
+          <input digitOnly [class.is-invalid]="invalidPhone" formControlName="phone" type="text" class="form-control" placeholder="Agregue un telefono aqui">          
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="addPhoneNumber()" type="button">agregar</button>
+          </div>          
+        </div>
+        <small *ngIf="invalidPhone" class="text-danger">
+          Ingrese almenos un numero telefonico
+        </small>
+      </div>
+
+      <ul class="list-group" *ngFor="let phone of phoneNumbers; let i = index;">
+        <li class="list-group-item">{{phone}}<a style="color:red" (click)="deletePhoneNumber(i)" class="fas fa-trash-alt fa-lg right"></a></li>        
+      </ul>
+      
+      <button type="submit" (click)="save()" class="btn btn-primary my-3">Crear</button>  
+    </div> 
+
+    <div class="col-lg-6 ">
+      <div class="d-flex flex-column align-items-center">
+        <img class="py-5" [src]="img" alt="">        
+        <input formControlName="photo" type="text" class="d-none">
+        <input accept="image/*" formControlName="photoRAW" (change)="convertFileToBase64($event.target.files)" type="file" id="getFile" class="d-none">
+        <label style="margin-bottom: 60px;" id="getFileLabel" for="getFile" class="btn btn-primary">Seleccionar archivo</label>
+        <small *ngIf="invalidPhoto" class="text-danger">
+          Ingrese una imagen
+        </small>
+      </div>      
+    </div>  
+  </div>
+  </form>  
+</div>
